@@ -1,0 +1,196 @@
+:root {
+  --bg: #0f1117;
+  --panel: #181b24;
+  --panel-2: #1f2330;
+  --border: #2a2f3d;
+  --text: #e6e9ef;
+  --muted: #9aa3b2;
+  --accent: #6c8cff;
+  --accent-2: #4f6cf7;
+  --danger: #ff6b6b;
+  --green: #46d39a;
+  --amber: #ffce5a;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 360px;
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+}
+
+.header-actions { display: flex; gap: 6px; }
+
+.icon-btn {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.icon-btn:hover { border-color: var(--accent); }
+
+.event-form {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.row { display: flex; flex-direction: column; gap: 8px; }
+.row.two { flex-direction: row; }
+.row.two > * { flex: 1; }
+
+input, select, textarea {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  width: 100%;
+  font-family: inherit;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+textarea { resize: vertical; }
+
+.form-actions { flex-direction: row; gap: 8px; }
+
+button.primary {
+  background: var(--accent-2);
+  border: none;
+  color: white;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  flex: 1;
+}
+button.primary:hover { background: var(--accent); }
+
+button.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button.ghost:hover { color: var(--text); border-color: var(--muted); }
+
+.filters {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--bg);
+}
+.chip {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.chip.active { background: var(--accent-2); color: white; border-color: var(--accent-2); }
+
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.event-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+.event-card.overdue { border-left: 3px solid var(--danger); }
+.event-card.soon { border-left: 3px solid var(--amber); }
+.event-card.upcoming { border-left: 3px solid var(--green); }
+
+.event-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.event-name { font-weight: 600; word-break: break-word; }
+.event-type {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--panel-2);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.event-date { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.event-countdown { font-size: 12px; margin-top: 4px; font-weight: 600; }
+.countdown-days { color: var(--green); }
+.countdown-soon { color: var(--amber); }
+.countdown-over { color: var(--danger); }
+.event-notes { color: var(--muted); font-size: 12px; margin-top: 6px; white-space: pre-wrap; word-break: break-word; }
+
+.event-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.event-actions a, .event-actions button {
+  font-size: 12px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.event-actions a:hover, .event-actions button:hover { border-color: var(--accent); }
+.event-actions .del:hover { border-color: var(--danger); color: var(--danger); }
+
+.empty {
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+  padding: 24px 20px;
+  line-height: 1.5;
+}
+.empty.hidden { display: none; }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>HackTrack</title>
+</head>
+<body>
+  <header class="header">
+    <h1>HackTrack</h1>
+    <div class="header-actions">
+      <button id="exportBtn" class="icon-btn" title="Export JSON">⭳</button>
+      <button id="importBtn" class="icon-btn" title="Import JSON">⭱</button>
+      <input type="file" id="importFile" accept="application/json" hidden />
+    </div>
+  </header>
+
+  <form id="eventForm" class="event-form" autocomplete="off">
+    <input type="hidden" id="eventId" />
+    <div class="row">
+      <input type="text" id="name" placeholder="Event name" required maxlength="120" />
+    </div>
+    <div class="row two">
+      <select id="type" required>
+        <option value="Hackathon">Hackathon</option>
+        <option value="Competition">Competition</option>
+        <option value="Contest">Contest</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="date" id="date" required />
+    </div>
+    <div class="row two">
+      <input type="url" id="link" placeholder="Link (optional)" maxlength="500" />
+      <input type="number" id="remindDays" min="0" max="60" value="1" title="Days before to remind" />
+    </div>
+    <div class="row">
+      <textarea id="notes" placeholder="Notes (optional)" rows="2" maxlength="500"></textarea>
+    </div>
+    <div class="row form-actions">
+      <button type="submit" id="saveBtn" class="primary">Add Event</button>
+      <button type="button" id="cancelEdit" class="ghost" hidden>Cancel</button>
+    </div>
+  </form>
+
+  <div class="filters">
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-filter="upcoming">Upcoming</button>
+    <button class="chip" data-filter="past">Past</button>
+  </div>
+
+  <ul id="eventList" class="event-list"></ul>
+  <p id="emptyState" class="empty">No events yet. Add your first hackathon, competition, or contest above.</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>
